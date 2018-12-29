@@ -1,0 +1,42 @@
+/**
+ * mixins example
+ */
+class Person {
+  String firstName;
+  String lastName;
+
+  Person(this.firstName, this.lastName);
+
+  String get fullName => "$firstName $lastName";
+}
+
+class ProgrammingSkills {
+  coding() {
+    print("writing code...");
+  }
+}
+
+class ManagmentSkills {
+  manage() {
+    print("managing project...");
+  }
+}
+
+class AdvancedProgrammingSkills extends ProgrammingSkills { // this is not a mixin as it does not extend Object
+  makingCoffe() {
+    print("making coffe...");
+  }
+}
+
+class SeniorDeveloper extends Person with ProgrammingSkills, ManagmentSkills {
+  SeniorDeveloper(String firstName, String lastName) : super(firstName, lastName);
+}
+
+class JuniorDeveloper extends Person with ProgrammingSkills {
+  JuniorDeveloper(String firstName, String lastName) : super(firstName, lastName);
+}
+
+main() {
+  var p = new SeniorDeveloper("clark", "kent");
+  p.coding();
+}
