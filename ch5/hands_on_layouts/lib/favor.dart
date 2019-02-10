@@ -22,4 +22,10 @@ class Favor {
 
   /// returns true if the user has not answered the request yet
   get isRequested => accepted == null;
+
+  /// returns true if the favor is already completed
+  get isCompleted => completed != null;
+
+  /// returns true if the favor was not accepted
+  get isRefused => accepted == false;
 }

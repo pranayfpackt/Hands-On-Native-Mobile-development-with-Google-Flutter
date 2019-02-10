@@ -45,59 +45,41 @@ class FavorsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Your favors"),
-      ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: 46.0,
-            alignment: Alignment.center,
-            child: ListView(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  FavorCategoryChip(title: "Requests"),
-                  FavorCategoryChip(title: "Doing"),
-                  FavorCategoryChip(title: "Completed"),
-                  FavorCategoryChip(title: "Refused"),
-                ]),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Your favors"),
+          bottom: TabBar(            
+            isScrollable: true,
+            tabs: [
+              _buildCategoryTab("Requests"),
+              _buildCategoryTab("Doing"),
+              _buildCategoryTab("Completed"),
+              _buildCategoryTab("Refused"),
+            ],
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                FavorsList(title: "Requests", favors: pendingAnswerFavors),
-                FavorsList(title: "Doing", favors: acceptedFavors),
-                FavorsList(title: "Completed", favors: completedFfavors),
-                FavorsList(title: "Refused", favors: refusedFavors),
-              ],
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Ask a favor',
-        child: Icon(Icons.add),
+        ),
+        body: TabBarView(
+          children: [
+            FavorsList(title: "Pending Requests", favors: pendingAnswerFavors),
+            FavorsList(title: "Doing", favors: acceptedFavors),
+            FavorsList(title: "Completed", favors: completedFfavors),
+            FavorsList(title: "Refused", favors: refusedFavors),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          tooltip: 'Ask a favor',
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
-}
 
-class FavorCategoryChip extends StatelessWidget {
-  final String title;
-
-  const FavorCategoryChip({Key key, this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      key: ValueKey(title),
-      padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: Chip(
-        label: Text(title),
-      ),
+  Widget _buildCategoryTab(String title) {
+    return Tab(
+      child: Text(title),
     );
   }
 }
@@ -111,21 +93,21 @@ class FavorsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        Text(title),
-        ListView.builder(
-          shrinkWrap: true,
-
-          physics:
-              NeverScrollableScrollPhysics(), // nested list views do not disturb with scroll, so the
-          // parent listview controls the scroll
-          itemCount: favors.length,
-          itemBuilder: (BuildContext context, int index) {
-            final favor = favors[index];
-            return FavorCardItem(
-              favor: favor,
-            );
-          },
+        Padding(
+          child: Text(title),
+          padding: EdgeInsets.only(top: 16.0),
+        ),
+        Expanded(
+          child: ListView.builder(
+            physics: BouncingScrollPhysics(),
+            itemCount: favors.length,
+            itemBuilder: (BuildContext context, int index) {
+              final favor = favors[index];
+              return FavorCardItem(favor: favor);
+            },
+          ),
         ),
       ],
     );
@@ -147,7 +129,7 @@ class FavorCardItem extends StatelessWidget {
           children: <Widget>[
             _itemHeader(favor),
             Text(favor.description),
-            _itemActions(favor)
+            _itemFooter(favor)
           ],
         ),
         padding: EdgeInsets.all(8.0),
@@ -155,36 +137,49 @@ class FavorCardItem extends StatelessWidget {
     );
   }
 
-  Widget _itemActions(Favor favor) {
-    return favor.isRequested
-        ? Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              FlatButton(
-                child: Text("Refuse"),
-                onPressed: () {},
-              ),
-              FlatButton(
-                child: Text("Do"),
-                onPressed: () {},
-              )
-            ],
+  Widget _itemFooter(Favor favor) {    
+    if (favor.isCompleted) {
+      final format = DateFormat();
+      return Container(
+        margin: EdgeInsets.only(top: 8.0),
+        alignment: Alignment.centerRight,
+        child: Chip(          
+          label: Text("Completed at: ${format.format(favor.completed)}"),
+        ),
+      );
+    }
+    if (favor.isRequested) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FlatButton(
+            child: Text("Refuse"),
+            onPressed: () {},
+          ),
+          FlatButton(
+            child: Text("Do"),
+            onPressed: () {},
           )
-        : favor.isDoing
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  FlatButton(
-                    child: Text("give up"),
-                    onPressed: () {},
-                  ),
-                  FlatButton(
-                    child: Text("complete"),
-                    onPressed: () {},
-                  )
-                ],
-              )
-            : Container();
+        ],
+      );
+    }
+    if (favor.isDoing) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FlatButton(
+            child: Text("give up"),
+            onPressed: () {},
+          ),
+          FlatButton(
+            child: Text("complete"),
+            onPressed: () {},
+          )
+        ],
+      );
+    }
+
+    return Container();
   }
 
   Widget _itemHeader(Favor favor) {

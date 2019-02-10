@@ -34,7 +34,17 @@ final mockPendingFavors = [
       number: "11111111111",
       photoURL: "https://placekitten.com/g/200/300",
     ),
-  )
+  ),
+  Favor(
+    uuid: uuid.v4(),
+    description: "go to the supermarket now!",
+    dueDate: DateTime.now(),
+    friend: Friend(
+      name: "My cat",
+      number: "11111111111",
+      photoURL: "https://placekitten.com/g/200/300",
+    ),
+  ),
 ];
 
 // accepted favors
@@ -69,6 +79,7 @@ final mockCompletedFavors = [
     uuid: uuid.v4(),
     description: "make the dinner",
     dueDate: DateTime.now().add(Duration(days: 1)),
+    completed: DateTime.now(),
     accepted: true,
     friend: Friend(
       name: "Mom",
@@ -84,7 +95,7 @@ final mockRefusedFavors = [
     uuid: uuid.v4(),
     description: "find a job",
     dueDate: DateTime.now().add(Duration(days: 1)),
-    accepted: true,
+    accepted: false,
     friend: Friend(
       name: "Dad",
       number: "99999999999",
