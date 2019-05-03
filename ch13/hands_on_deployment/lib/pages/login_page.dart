@@ -4,12 +4,11 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hands_on_contact_picker/friend.dart';
-import 'package:hands_on_contact_picker/pages/favors_page.dart';
-import 'package:hands_on_contact_picker/verification_code_input_widget.dart';
+import 'package:hands_on_deployment/friend.dart';
+import 'package:hands_on_deployment/pages/favors_page.dart';
+import 'package:hands_on_deployment/verification_code_input_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
 class LoginPage extends StatefulWidget {
   List<Friend> friends;
@@ -35,9 +34,6 @@ class LoginPageState extends State<LoginPage> {
   bool _showProgress = false;
   String _displayName = '';
   File _imageFile;
-
-  bool _labeling = false;
-  List<Label> _labels = List();
 
   @override
   void initState() {
@@ -122,25 +118,7 @@ class LoginPageState extends State<LoginPage> {
                         },
                       ),
                       Container(
-                        height: 16,
-                      ),                      
-                      Text(
-                        _labeling
-                            ? "Labeling the captured image ..."
-                            : "Capture a image to start labeling",
-                      ),
-                      Container(
                         height: 32.0,
-                      ),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: min(_labels.length, 5),
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (BuildContext context, int index) => Text(
-                            "${_labels[index].label}, confidence: ${_labels[index].confidence}"),
-                      ),
-                      Container(
-                        height: 16,
                       ),
                       TextField(
                         decoration: InputDecoration(hintText: "Display name"),
@@ -309,7 +287,6 @@ class LoginPageState extends State<LoginPage> {
     setState(() {
       _imageFile = image;
     });
-    _labelImage();
   }
 
   uploadPicture(String userUid) async {
@@ -324,25 +301,5 @@ class LoginPageState extends State<LoginPage> {
     StorageTaskSnapshot lastSnapshot = await uploadTask.onComplete;
 
     return await lastSnapshot.ref.getDownloadURL();
-  }
-
-  _labelImage() async {
-    if (_imageFile == null) return;
-
-    setState(() {
-      _labeling = true;
-    });
-
-    final FirebaseVisionImage visionImage =
-        FirebaseVisionImage.fromFile(_imageFile);
-
-    final LabelDetector labelDetector = FirebaseVision.instance.labelDetector();
-
-    List<Label> labels = await labelDetector.detectInImage(visionImage);
-
-    setState(() {
-      _labels = labels;
-      _labeling = false;
-    });
   }
 }

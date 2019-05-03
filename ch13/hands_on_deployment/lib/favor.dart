@@ -1,4 +1,4 @@
-import 'package:hands_on_contact_picker/friend.dart';
+import 'package:hands_on_deployment/friend.dart';
 
 class Favor {
   final String uuid;

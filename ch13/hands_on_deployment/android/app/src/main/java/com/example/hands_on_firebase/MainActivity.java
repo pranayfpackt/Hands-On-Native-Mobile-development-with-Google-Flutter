@@ -1,4 +1,4 @@
-package com.example.hands_on_contact_picker;
+package com.example.hands_on_deployment;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

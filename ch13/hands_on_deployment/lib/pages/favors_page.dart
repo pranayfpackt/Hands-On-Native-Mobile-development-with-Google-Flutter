@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:hands_on_contact_picker/favor.dart';
-import 'package:hands_on_contact_picker/friend.dart';
-import 'package:hands_on_contact_picker/pages/login_page.dart';
-import 'package:hands_on_contact_picker/pages/request_favors_page.dart';
+import 'package:hands_on_deployment/favor.dart';
+import 'package:hands_on_deployment/friend.dart';
+import 'package:hands_on_deployment/pages/login_page.dart';
+import 'package:hands_on_deployment/pages/request_favors_page.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 

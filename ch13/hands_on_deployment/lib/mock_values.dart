@@ -1,5 +1,5 @@
-import 'package:hands_on_contact_picker/favor.dart';
-import 'package:hands_on_contact_picker/friend.dart';
+import 'package:hands_on_deployment/favor.dart';
+import 'package:hands_on_deployment/friend.dart';
 import 'package:uuid/uuid.dart';
 
 final uuid = Uuid();

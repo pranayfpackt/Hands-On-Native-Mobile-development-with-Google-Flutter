@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hands_on_contact_picker/app_theme.dart';
-import 'package:hands_on_contact_picker/pages/login_page.dart';
+import 'package:hands_on_deployment/app_theme.dart';
+import 'package:hands_on_deployment/pages/login_page.dart';
 
 void main() {
   FirebaseAdMob.instance.initialize(
-    appId: 'YOUR_ADMOB_APPID'
+    appId: 'YOUR ADMOB APP ID HERE '
   );
   runApp(MyApp());
 }
