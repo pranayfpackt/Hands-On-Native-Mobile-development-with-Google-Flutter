@@ -6,5 +6,8 @@ import 'person_library.dart';
 class Student extends Person {
   Student({firstName, lastName})
       : super(
-            firstName: firstName, lastName: lastName, type: PersonType.student);
+          firstName: firstName,
+          lastName: lastName,
+          type: PersonType.student,
+        );
 }

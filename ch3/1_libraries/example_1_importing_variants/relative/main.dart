@@ -1,3 +1,3 @@
 // relative import subdir libraries
-import 'subdir/a.dart';
-import 'subdir/b.dart';
+import 'foo/a.dart';
+import 'foo/b.dart';

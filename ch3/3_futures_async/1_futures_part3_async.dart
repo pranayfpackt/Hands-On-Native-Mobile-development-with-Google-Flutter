@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:async';
 
 Future longRunningOperation() async {
   for (int i = 0; i < 5; i++) {
@@ -15,7 +15,7 @@ main() async {
   print("continuing main body");
 
   for (int i = 10; i < 15; i++) {  
-    sleep(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 1));
     print("index from main: $i");
   }
 

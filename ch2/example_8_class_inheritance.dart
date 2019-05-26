@@ -24,5 +24,8 @@ main() {
   Student student = new Student("Clark", "Kent", "Kal-El");
 
   print(student); // same as calling student.toString()
-  print("This is a student: $student"); // will also call the toString() of student implicitly
+  // prints Clark Kent, also known as Kal-El
+
+  print("This is a student: $student"); 
+  // will also call the toString() of student implicitly
 }

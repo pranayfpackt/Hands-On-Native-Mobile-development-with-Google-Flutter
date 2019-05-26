@@ -7,6 +7,7 @@ class ShouldWriteAProgram { // this is simple class
 
   ShouldWriteAProgram(this.language, this.platform);
 
+  // this special method named 'call' makes the class behave as a function
   bool call(String category) {
     if(language == "Dart" && platform == "Flutter") {
       return category != "todo";
@@ -18,7 +19,9 @@ class ShouldWriteAProgram { // this is simple class
 main() {
   var shouldWrite = ShouldWriteAProgram("Dart", "Flutter");
     
-  print(shouldWrite("todo")); // Another todo list app? no thanks.
+  print(shouldWrite("todo")); 
+  // this function is invoking the ShouldWriteAProgram callable class 
+  // resulting in a implicit call to its "call" method
 
   Function shouldWriteFunction = shouldWrite;
   print(shouldWriteFunction("todo")); // same result

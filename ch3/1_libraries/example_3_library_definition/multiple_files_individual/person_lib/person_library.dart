@@ -7,13 +7,11 @@ export 'student.dart';
 class Person {
   String firstName;
   String lastName;
-  PersonType _type;
+  final PersonType type;
 
-  Person({this.firstName, this.lastName, PersonType type}) {
-    _type = type;
-  }
+  Person({this.firstName, this.lastName, this.type});
 
-  String toString() => "($_type): $firstName $lastName";
+  String toString() => "($type): $firstName $lastName";
 }
 
 enum PersonType { student, employee }

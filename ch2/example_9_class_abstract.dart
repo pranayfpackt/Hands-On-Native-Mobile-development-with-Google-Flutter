@@ -25,7 +25,9 @@ class Student extends Person {
 
 main() {
   Person student = new Student("Clark", "Kent", "Kal-El"); // works as we are instantiating the subtype
-  // Person p = new Person(); does not compile, as abstract classes cannot be instantiated
+   
+   // Person p = new Person(); 
+   // abstract classes cannot be instantiated
 
   print(student); 
 }

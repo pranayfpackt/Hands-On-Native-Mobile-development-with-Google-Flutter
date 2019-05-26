@@ -23,8 +23,8 @@ class ManagmentSkills {
 }
 
 class AdvancedProgrammingSkills extends ProgrammingSkills { // this is not a mixin as it does not extend Object
-  makingCoffe() {
-    print("making coffe...");
+  makingCoffee() {
+    print("making coffee...");
   }
 }
 

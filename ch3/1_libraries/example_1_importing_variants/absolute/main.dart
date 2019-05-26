@@ -1,3 +1,3 @@
-// absolute import subdir libraries
-import "file:///c:/dart_package/lib/a.dart";
-import "file:///c:/dart_package/lib/b.dart";
+// absolute import foo libraries
+import "file:///c:/dart_package/foo/a.dart";
+import "file:///c:/dart_package/foo/b.dart";
