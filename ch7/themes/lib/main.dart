@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyAppDefaultTheme()); // default theme
-//  void main() => runApp(MyAppCustomTheme()); 
-//  void main() => runApp(MaterialAppDefaultTheme()); 
+// void main() => runApp(MyAppDefaultTheme()); // default theme
+//  void main() => runApp(MyAppCustomTheme());
+//  void main() => runApp(MaterialAppDefaultTheme());
+void main() => runApp(PlatformSpecificWidgets());
 
 class MyAppDefaultTheme extends StatelessWidget {
   @override
@@ -50,7 +54,7 @@ class MyAppCustomTheme extends StatelessWidget {
 class MaterialAppDefaultTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(                
+    return MaterialApp(
       home: Container(
         color: Colors.white,
         child: Center(
@@ -64,3 +68,15 @@ class MaterialAppDefaultTheme extends StatelessWidget {
   }
 }
 
+class PlatformSpecificWidgets extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Platform.isAndroid
+        ? MaterialApp(
+            theme: ThemeData(primaryColor: Colors.grey),
+          )
+        : CupertinoApp(
+            theme: CupertinoThemeData(primaryColor: CupertinoColors.lightBackgroundGray),
+          );
+  }
+}

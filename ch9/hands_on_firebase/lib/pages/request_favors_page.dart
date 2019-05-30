@@ -84,6 +84,9 @@ class RequestFavorPageState extends State<RequestFavorPage> {
                     child: Text("SAVE"),
                     onPressed: () {
                       RequestFavorPageState.of(context).save(context);
+                      // we could call save() method directly 
+                      // as we are in the same class. 
+                      // intentionally left for exemplification.
                     },
                   ),
             ),

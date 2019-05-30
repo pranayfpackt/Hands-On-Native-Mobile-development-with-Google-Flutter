@@ -25,7 +25,7 @@ class _PressAndHoldWidgetExampleState extends State<PressAndHoldWidgetExample> {
         color: Colors.grey,
         child: Center(
           child: Text(
-            "DoubleTap count: $_counter",
+            "Long press count: $_counter",
             style: Theme.of(context).textTheme.display1,
           ),
         ),
