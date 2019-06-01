@@ -117,21 +117,19 @@ class FavorsPageState extends State<FavorsPage> {
             FavorsList(title: "Refused", favors: refusedFavors),
           ],
         ),
-        floatingActionButton: Hero(
-          tag: "request_favor",
-          child: FloatingActionButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => RequestFavorPage(
-                        friends: friends.toList(),
-                      ),
-                ),
-              );
-            },
-            tooltip: 'Ask a favor',
-            child: Icon(Icons.add),
-          ),
+        floatingActionButton: FloatingActionButton(
+          heroTag: "request_favor",
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => RequestFavorPage(
+                      friends: friends.toList(),
+                    ),
+              ),
+            );
+          },
+          tooltip: 'Ask a favor',
+          child: Icon(Icons.add),
         ),
       ),
     );

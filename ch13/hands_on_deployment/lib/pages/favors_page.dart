@@ -119,21 +119,19 @@ class FavorsPageState extends State<FavorsPage> {
             FavorsList(title: "Refused", favors: refusedFavors),
           ],
         ),
-        floatingActionButton: Hero(
-          tag: "request_favor",
-          child: FloatingActionButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => RequestFavorPage(
-                        friends: friends.toList(),
-                      ),
-                ),
-              );
-            },
-            tooltip: 'Ask a favor',
-            child: Icon(Icons.add),
-          ),
+        floatingActionButton: FloatingActionButton(
+          heroTag: "request_favor",
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => RequestFavorPage(
+                      friends: friends.toList(),
+                    ),
+              ),
+            );
+          },
+          tooltip: 'Ask a favor',
+          child: Icon(Icons.add),
         ),
       ),
     );
@@ -215,7 +213,6 @@ class FavorCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Card(
       key: ValueKey(favor.uuid),
       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
@@ -225,7 +222,7 @@ class FavorCardItem extends StatelessWidget {
             _itemHeader(context, favor),
             Linkify(
               text: favor.description,
-              humanize: true,                            
+              humanize: true,
               onOpen: handleLinkClick,
             ),
             _itemFooter(context, favor)
