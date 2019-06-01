@@ -173,7 +173,20 @@ class FavorsList extends StatelessWidget {
             itemCount: favors.length,
             itemBuilder: (BuildContext context, int index) {
               final favor = favors[index];
-              return FavorCardItem(favor: favor);
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      // transitionDuration: Duration(seconds: 3),
+                      // uncomment to see it transition slower
+                      pageBuilder: (_, __, ___) =>
+                          FavorDetailsPage(favor: favor),
+                    ),
+                  );
+                },
+                child: FavorCardItem(favor: favor),
+              );
             },
           ),
         ),
@@ -197,9 +210,12 @@ class FavorCardItem extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _itemHeader(context, favor),
-            Text(
-              favor.description,
-              style: bodyStyle,
+            Hero(
+              tag: "description_${favor.uuid}",
+              child: Text(
+                favor.description,
+                style: bodyStyle,
+              ),
             ),
             _itemFooter(context, favor)
           ],
@@ -269,9 +285,12 @@ class FavorCardItem extends StatelessWidget {
 
     return Row(
       children: <Widget>[
-        CircleAvatar(
-          backgroundImage: NetworkImage(
-            favor.friend.photoURL,
+        Hero(
+          tag: "avatar_${favor.uuid}",
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(
+              favor.friend.photoURL,
+            ),
           ),
         ),
         Expanded(
@@ -401,5 +420,72 @@ class RequestFavorPageState extends State<RequestFavorPage> {
       // store the favor request on firebase
       Navigator.pop(context);
     }
+  }
+}
+
+class FavorDetailsPage extends StatefulWidget {
+  final Favor favor;
+
+  const FavorDetailsPage({Key key, this.favor}) : super(key: key);
+
+  @override
+  _FavorDetailsPageState createState() => _FavorDetailsPageState();
+}
+
+class _FavorDetailsPageState extends State<FavorDetailsPage> {
+  @override
+  Widget build(BuildContext context) {
+    final bodyStyle = Theme.of(context).textTheme.display1;
+    return Scaffold(
+      body: Card(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              _itemHeader(context, widget.favor),
+              Container(height: 16.0),
+              Expanded(
+                child: Center(
+                  child: Hero(
+                    tag: "description_${widget.favor.uuid}",
+                    child: Text(
+                      widget.favor.description,
+                      style: bodyStyle,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _itemHeader(BuildContext context, Favor favor) {
+    final headerStyle = Theme.of(context).textTheme.display2;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Hero(
+          tag: "avatar_${favor.uuid}",
+          child: CircleAvatar(
+            radius: 60,
+            backgroundImage: NetworkImage(
+              favor.friend.photoURL,
+            ),
+          ),
+        ),
+        Container(height: 16.0),
+        Text(
+          "${favor.friend.name} asked you to... ",
+          style: headerStyle,
+        ),
+      ],
+    );
   }
 }

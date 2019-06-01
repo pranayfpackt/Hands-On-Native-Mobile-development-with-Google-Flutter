@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class NavigatorResultApp extends StatefulWidget {
   @override
-  NavigatorResultAppState createState() =>
-      NavigatorResultAppState();
+  _NavigatorResultAppState createState() =>
+      _NavigatorResultAppState();
 }
 
-class NavigatorResultAppState
+class _NavigatorResultAppState
     extends State<NavigatorResultApp> {
 
   String _message = "";

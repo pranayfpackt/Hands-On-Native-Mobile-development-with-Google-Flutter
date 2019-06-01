@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class NavigatorTransitionApp extends StatefulWidget {
   @override
-  NavigatorTransitionAppState createState() => NavigatorTransitionAppState();
+  _NavigatorTransitionAppState createState() => _NavigatorTransitionAppState();
 }
 
-class NavigatorTransitionAppState extends State<NavigatorTransitionApp> {
+class _NavigatorTransitionAppState extends State<NavigatorTransitionApp> {
   @override
   Widget build(BuildContext context) {
     return WidgetsApp(

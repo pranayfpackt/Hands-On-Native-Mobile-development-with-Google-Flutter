@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class NavigatorNamedRoutesWidgetsApp extends StatefulWidget {
   @override
-  NavigatorNamedRoutesWidgetsAppState createState() =>
-      NavigatorNamedRoutesWidgetsAppState();
+  _NavigatorNamedRoutesWidgetsAppState createState() =>
+      _NavigatorNamedRoutesWidgetsAppState();
 }
 
-class NavigatorNamedRoutesWidgetsAppState
+class _NavigatorNamedRoutesWidgetsAppState
     extends State<NavigatorNamedRoutesWidgetsApp> {
   @override
   Widget build(BuildContext context) {
