@@ -117,7 +117,7 @@ class FavorsPageState extends State<FavorsPage> {
           title: Text("Your favors"),
           bottom: TabBar(
             isScrollable: true,
-            tabs: tabs,
+            tabs: tabs.map(((tab) => tab as Widget)).toList(),
           ),
         ),
         body: TabBarView(
