@@ -38,7 +38,7 @@ class RequestFavorPageState extends State<RequestFavorPage> {
   //   childDirected: true,
   //   nonPersonalizedAds: true,
   // );
-  
+
   static RequestFavorPageState of(BuildContext context) {
     return context.ancestorStateOfType(TypeMatcher<RequestFavorPageState>());
   }
@@ -58,7 +58,9 @@ class RequestFavorPageState extends State<RequestFavorPage> {
       ..load()
       ..show();
 
-    _interstitialAd = InterstitialAd(adUnitId: InterstitialAd.testAdUnitId)..load();
+    _interstitialAd = InterstitialAd(
+      adUnitId: InterstitialAd.testAdUnitId,
+    )..load();
   }
 
   @override
@@ -84,8 +86,8 @@ class RequestFavorPageState extends State<RequestFavorPage> {
                     child: Text("SAVE"),
                     onPressed: () {
                       RequestFavorPageState.of(context).save(context);
-                      // we could call save() method directly 
-                      // as we are in the same class. 
+                      // we could call save() method directly
+                      // as we are in the same class.
                       // intentionally left for exemplification.
                     },
                   ),

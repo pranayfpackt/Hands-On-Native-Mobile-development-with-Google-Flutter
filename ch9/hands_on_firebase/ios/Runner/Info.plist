@@ -43,5 +43,7 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>User can add a profile picture right from the camera</string>
+	<key>GADApplicationIdentifier</key>
+  	<string>ca-app-pub-3940256099942544~1458002511</string> <!--replace with your own iOS app id-->
 </dict>
 </plist>
