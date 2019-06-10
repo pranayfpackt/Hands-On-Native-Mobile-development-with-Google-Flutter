@@ -54,7 +54,7 @@ class _MapPageState extends State<MapPage> {
     super.initState();
 
     _googleMapsPlaces = GoogleMapsPlaces(
-      apiKey: 'AIzaSyCxzme2R5RPQdSwuqrsudZmL7RADBO61pc',
+      apiKey: 'YOUR_PLACES_API_KEY',
     );
   }
 

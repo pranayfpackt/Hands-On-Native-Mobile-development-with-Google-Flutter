@@ -35,10 +35,18 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<!-- image_picker plugin -->
 	<key>NSCameraUsageDescription</key>
-	<string>User can add a profile picture right from the camera</string>
+    <string>You can add a profile picture right from the camera</string>  
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires access to the photo library.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app does not require access to the microphone.</string>
+
+	<!-- contact_picker plugin -->
 	<key>NSContactsUsageDescription</key>
 	<string>User can import a contact to make a request</string>
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

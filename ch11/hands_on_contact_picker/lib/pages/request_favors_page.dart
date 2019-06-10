@@ -32,7 +32,7 @@ class RequestFavorPageState extends State<RequestFavorPage> {
   BannerAd _bannerAd;
   Friend _newFriend = Friend(name: "New friend", uuid: 'new');
 
-  final ContactPicker _contactPicker = new ContactPicker();
+  final ContactPicker _contactPicker = ContactPicker();
 
   Friend _importedFriend;
 
