@@ -74,9 +74,27 @@ class PlatformSpecificWidgets extends StatelessWidget {
     return Platform.isAndroid
         ? MaterialApp(
             theme: ThemeData(primaryColor: Colors.grey),
+            home: Material( // note the material specific widget
+              color: Colors.white,
+              child: Center(
+                child: Text(
+                  "Simple Text",
+                ),
+              ),
+            ),
           )
         : CupertinoApp(
-            theme: CupertinoThemeData(primaryColor: CupertinoColors.lightBackgroundGray),
+            theme: CupertinoThemeData(
+              primaryColor: CupertinoColors.lightBackgroundGray,
+            ),
+            home: Container(
+              color: Colors.white,
+              child: Center(
+                child: Text(
+                  "Simple Text",
+                ),
+              ),
+            ),
           );
   }
 }
