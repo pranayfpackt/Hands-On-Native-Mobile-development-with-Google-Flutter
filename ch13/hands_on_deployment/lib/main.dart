@@ -6,7 +6,7 @@ import 'package:hands_on_deployment/pages/login_page.dart';
 
 void main() {
   FirebaseAdMob.instance.initialize(
-    appId: 'PUT YOUR ADMOB ID HERE'
+    appId: 'YOUR APP ADMOB ID HERE'
   );
   runApp(MyApp());
 }
