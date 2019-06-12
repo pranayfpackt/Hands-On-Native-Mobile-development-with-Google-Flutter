@@ -14,8 +14,10 @@ class AnimationsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Animations Demo",
-      home: RotationAnimations(),
-      // home: ScaleAnimations(),
+      // comment the following line and uncomment the 
+      // below example you want to run 
+      home: RotationAnimations(), // comment this
+      // home: ScaleAnimations(), // uncomment this for scale examples
       // home: TranslateAnimations(),
       // home: ComposedAnimations(),
       // home: AnimationBuilderAnimations(),

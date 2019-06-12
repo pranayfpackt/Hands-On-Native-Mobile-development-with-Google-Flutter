@@ -11,7 +11,16 @@ class MyApp extends StatelessWidget {
       title: 'Transformations Demo',
       home: Container(
         color: Colors.yellow,
-        child: Center(child: _composedTranformationExample2()),
+        // comment current line and uncomment the below example
+        // you want to run 
+        child: Center(child: _rotationExample1()), // comment this
+        // child: Center(child: _rotationExample2()), // uncomment this for 2nd rotation example
+        // child: Center(child: _scaleExample1()),
+        // child: Center(child: _scaleExample2),
+        // child: Center(child: _translateExample1()),
+        // child: Center(child: _translateExample2()),
+        // child: Center(child: _composedTranformationExample1()),
+        // child: Center(child: _composedTranformationExample2()),
       ),
     );
   }
