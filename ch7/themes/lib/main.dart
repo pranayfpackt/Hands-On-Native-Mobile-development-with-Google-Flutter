@@ -3,10 +3,13 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// comment the following line and uncomment the 
+// below example you want to run 
+
 // void main() => runApp(MyAppDefaultTheme()); // default theme
-//  void main() => runApp(MyAppCustomTheme());
-//  void main() => runApp(MaterialAppDefaultTheme());
-void main() => runApp(PlatformSpecificWidgets());
+// void main() => runApp(MyAppCustomTheme());
+void main() => runApp(MaterialAppDefaultTheme());
+// void main() => runApp(PlatformSpecificWidgets());
 
 class MyAppDefaultTheme extends StatelessWidget {
   @override
