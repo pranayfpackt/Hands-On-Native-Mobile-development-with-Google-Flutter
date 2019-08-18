@@ -25,7 +25,7 @@ mixin ProgrammingSkills on Developer {
   }
 }
 
-mixin ManagmentSkills on Developer {
+mixin ManagementSkills on Developer {
   manage() {
     print("managing project...");
   }
@@ -39,7 +39,7 @@ mixin ManagmentSkills on Developer {
 // }
 
 class SeniorDeveloper extends Developer
-    with ProgrammingSkills, ManagmentSkills {
+    with ProgrammingSkills, ManagementSkills {
   SeniorDeveloper({String firstName, String lastName})
       : super(firstName: firstName, lastName: lastName);
 }

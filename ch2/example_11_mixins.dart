@@ -16,7 +16,7 @@ class ProgrammingSkills {
   }
 }
 
-class ManagmentSkills {
+class ManagementSkills {
   manage() {
     print("managing project...");
   }
@@ -28,7 +28,7 @@ class AdvancedProgrammingSkills extends ProgrammingSkills { // this is not a mix
   }
 }
 
-class SeniorDeveloper extends Person with ProgrammingSkills, ManagmentSkills {
+class SeniorDeveloper extends Person with ProgrammingSkills, ManagementSkills {
   SeniorDeveloper(String firstName, String lastName) : super(firstName, lastName);
 }
 
